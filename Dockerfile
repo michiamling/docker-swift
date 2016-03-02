@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER Haris Amin <aminharis7@gmail.com>
+MAINTAINER Michael Amling <michiamling at gmail.com>
 
 ENV SWIFT_BRANCH development
 ENV SWIFT_VERSION DEVELOPMENT-SNAPSHOT-2016-02-25-a
@@ -29,3 +29,20 @@ ENV PATH /usr/bin:$PATH
 
 # Print Installed Swift Version
 RUN swift --version
+
+# Install Dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    libssl-dev libevent-dev libsqlite3-dev \
+    git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN git clone --depth 1 https://github.com/PerfectlySoft/Perfect.git perfect && \
+    cd perfect/PerfectLib && \
+    make && \
+    make install && \
+    cd ../PerfectServer && \
+    make && \
+    ln -s /perfect/PerfectServer/perfectserverhttp /usr/local/bin && \
+    ln -s /perfect/PerfectServer/perfectserverfcgi /usr/local/bin
