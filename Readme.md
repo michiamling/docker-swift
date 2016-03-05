@@ -3,7 +3,7 @@
 ![swift](https://raw.githubusercontent.com/hamin/EventSource.Swift/master/swift-logo.png)
 
 
-### An Ubuntu 14.04 Docker image for [Swift](https://swift.org) and perfect server.
+### An Ubuntu 15.10 Docker image for [Swift](https://swift.org) and perfect server.
 
 ### Docker Instructions
 
