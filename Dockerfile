@@ -4,6 +4,7 @@ MAINTAINER Michael Amling <michiamling at gmail.com>
 ENV SWIFT_BRANCH development
 ENV SWIFT_VERSION DEVELOPMENT-SNAPSHOT-2016-03-01-a
 ENV SWIFT_PLATFORM ubuntu1510
+ENV SWIFT_PLATFORM_DOT ubuntu15.10
 
 
 # Install related packages
@@ -17,7 +18,7 @@ RUN wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import - && \
     gpg --keyserver hkp://pool.sks-keyservers.net --refresh-keys Swift
 
 # Install Swift Ubuntu 14.04 Snapshot
-RUN SWIFT_ARCHIVE_NAME=swift-$SWIFT_VERSION-$SWIFT_PLATFORM && \
+RUN SWIFT_ARCHIVE_NAME=swift-$SWIFT_VERSION-$SWIFT_PLATFORM_DOT && \
     SWIFT_URL=https://swift.org/builds/$SWIFT_BRANCH/$(echo "$SWIFT_PLATFORM" | tr -d .)/swift-$SWIFT_VERSION/$SWIFT_ARCHIVE_NAME.tar.gz && \
     wget $SWIFT_URL && \
     wget $SWIFT_URL.sig && \
