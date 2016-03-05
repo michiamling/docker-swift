@@ -1,9 +1,9 @@
-FROM ubuntu:14.04
+FROM ubuntu:15.10
 MAINTAINER Michael Amling <michiamling at gmail.com>
 
 ENV SWIFT_BRANCH development
-ENV SWIFT_VERSION DEVELOPMENT-SNAPSHOT-2016-02-25-a
-ENV SWIFT_PLATFORM ubuntu14.04
+ENV SWIFT_VERSION DEVELOPMENT-SNAPSHOT-2016-03-01-a
+ENV SWIFT_PLATFORM ubuntu1510
 
 # Install related packages
 RUN apt-get update && \
@@ -33,7 +33,7 @@ RUN swift --version
 # Install Dependencies
 RUN apt-get update && \
     apt-get install -y \
-    libssl-dev libevent-dev libsqlite3-dev \
+    libssl-dev libevent-dev libsqlite3-dev uuid-dev libcurl4-openssl-dev libicu-dev \
     git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
